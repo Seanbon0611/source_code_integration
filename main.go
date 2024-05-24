@@ -11,11 +11,7 @@ import (
 
 func main() {
 	//initialize the tracer
-	tracer.Start(
-		tracer.WithEnv("test"),
-		tracer.WithServiceVersion("1.0.0"),
-		tracer.WithRuntimeMetrics(),
-	)
+	tracer.Start()
 	defer tracer.Stop()
 
 	// Create a new router
