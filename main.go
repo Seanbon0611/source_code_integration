@@ -11,11 +11,15 @@ import (
 
 func main() {
 	//initialize the tracer
-	tracer.Start()
+	tracer.Start(
+		tracer.WithEnv("test"),
+		tracer.WithServiceVersion("1.0.0"),
+		tracer.WithRuntimeMetrics(),
+	)
 	defer tracer.Stop()
 
 	// Create a new router
-	router := muxtrace.NewRouter(muxtrace.WithServiceName("source_code_integtation_example"))
+	router := muxtrace.NewRouter(muxtrace.WithServiceName("source_code_integration_example"))
 
 	// Define your routes
 	router.HandleFunc("/", homeHandler).Methods("GET")
